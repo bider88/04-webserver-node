@@ -2,21 +2,21 @@ const express = require('express')
 const app = express()
 
 // Settings
+app.set('view engine', 'hbs') // Express HBS engine
 
 // Middlewares
 app.use(express.static(__dirname + '/public'))
 
 // Routes
-// app.get('/', (req, res) => {
-//     const salida = {
-//         nombre: 'Irving Didier',
-//         edad: 29,
-//         url: req.url
-//     }
-//     res.send(salida)
-// })
+app.get('/', (req, res) => {
+    
+    res.render('home', {
+        nombre: 'Irving Didier',
+        anio: new Date().getFullYear()
+    })
+})
 
 // starting the server
-app.listen(3000, () => {
-    console.log('Escuchando peticiones en el puerto 3000')
+app.listen(4000, () => {
+    console.log('Escuchando peticiones en el puerto 4000')
 })
