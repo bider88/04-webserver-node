@@ -1,10 +1,13 @@
 const express = require('express')
 const app = express()
 const hbs = require('hbs')
+require('./helpers')
 
 // Settings
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs') // Express HBS engine
+
+// helpers
 
 // Middlewares
 app.use(express.static(__dirname + '/public'))
@@ -13,20 +16,16 @@ app.use(express.static(__dirname + '/public'))
 app.get('/', (req, res) => {
     
     res.render('home', {
-        nombre: 'Irving Didier',
-        anio: new Date().getFullYear()
+        name: 'irving didier'
     })
 })
 
 app.get('/about', (req, res) => {
     
-    res.render('about', {
-        nombre: 'Irving Didier',
-        anio: new Date().getFullYear()
-    })
+    res.render('about')
 })
 
 // starting the server
-app.listen(4000, () => {
-    console.log('Escuchando peticiones en el puerto 4000')
+app.listen(3000, () => {
+    console.log('Escuchando peticiones en el puerto 3000')
 })
