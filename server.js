@@ -3,7 +3,7 @@ const app = express()
 const hbs = require('hbs')
 require('./helpers')
 
-const port = process.env.PORT || 4000; 
+const port = process.env.PORT || 3000; 
 
 // Settings
 hbs.registerPartials(__dirname + '/views/partials')
@@ -22,7 +22,9 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
     
-    res.render('about')
+    res.render('about', {
+        name: 'irving didier'
+    })
 })
 
 // starting the server
